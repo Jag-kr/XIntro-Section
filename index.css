@@ -1,0 +1,476 @@
+/* ===== CSS Reset & Base ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-almost-white: hsl(0, 0%, 98%);
+  --clr-medium-gray: hsl(0, 0%, 41%);
+  --clr-almost-black: hsl(0, 0%, 8%);
+  --font-family: 'Epilogue', sans-serif;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --transition: 300ms ease;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--fw-medium);
+  color: var(--clr-medium-gray);
+  background-color: var(--clr-almost-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===== Header ===== */
+.header {
+  padding: 20px 16px;
+  position: relative;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 84px;
+  height: auto;
+}
+
+/* ===== Mobile Menu Toggle ===== */
+.open-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  z-index: 200;
+}
+
+.close-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4px;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+
+/* ===== Navigation ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 240px;
+  height: 100vh;
+  background-color: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  z-index: 300;
+  transition: right var(--transition);
+  overflow-y: auto;
+}
+
+.nav.active {
+  right: 0;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: var(--fw-medium);
+  color: var(--clr-medium-gray);
+  padding: 4px 0;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  color: var(--clr-almost-black);
+}
+
+.arrow-icon {
+  width: 10px;
+  height: 6px;
+  transition: transform var(--transition);
+}
+
+.nav-btn[aria-expanded="true"] .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* ===== Dropdown List ===== */
+.dropdown-list {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0 0 16px;
+}
+
+.dropdown-list.active {
+  display: flex;
+}
+
+.dropdown-link a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--clr-medium-gray);
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.dropdown-link a:hover {
+  color: var(--clr-almost-black);
+}
+
+.dropdown-link a img {
+  width: 16px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* ===== Registration Buttons ===== */
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 16px;
+}
+
+.btn-login {
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  color: var(--clr-medium-gray);
+  padding: 10px 24px;
+  transition: color var(--transition);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-login:hover {
+  color: var(--clr-almost-black);
+}
+
+.btn-register {
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  color: var(--clr-medium-gray);
+  padding: 10px 24px;
+  border: 2px solid var(--clr-medium-gray);
+  border-radius: 14px;
+  transition: color var(--transition), border-color var(--transition);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-register:hover {
+  color: var(--clr-almost-black);
+  border-color: var(--clr-almost-black);
+}
+
+/* ===== Overlay ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  z-index: 250;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== Main Content ===== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  width: 100%;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 480px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+.text-content {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.text-content h1 {
+  font-size: 34px;
+  font-weight: var(--fw-bold);
+  color: var(--clr-almost-black);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.text-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--clr-medium-gray);
+  margin-bottom: 24px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-learn-more {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  color: var(--clr-almost-white);
+  background-color: var(--clr-almost-black);
+  padding: 14px 28px;
+  border-radius: 14px;
+  transition: background-color var(--transition), color var(--transition);
+  border: 2px solid var(--clr-almost-black);
+}
+
+.btn-learn-more:hover {
+  background-color: transparent;
+  color: var(--clr-almost-black);
+}
+
+/* ===== Clients ===== */
+.clients {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.clients img {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ===== Footer Attribution ===== */
+.attribution {
+  text-align: center;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--clr-medium-gray);
+}
+
+.attribution a {
+  color: var(--clr-almost-black);
+  font-weight: var(--fw-bold);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--transition);
+}
+
+.attribution a:hover {
+  text-decoration-color: var(--clr-almost-black);
+}
+
+/* ===== Desktop Styles (768px+) ===== */
+@media (min-width: 768px) {
+  .header {
+    padding: 20px 40px;
+  }
+
+  .header-inner {
+    gap: 40px;
+  }
+
+  /* Hide mobile menu buttons */
+  .open-menu,
+  .close-menu {
+    display: none;
+  }
+
+  /* Navigation resets for desktop */
+  .nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    overflow-y: visible;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  /* Dropdown positioning for desktop */
+  .dropdown-list {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    min-width: 140px;
+    gap: 14px;
+  }
+
+  /* Features dropdown aligns left, Company also aligns left */
+  #features-dropdown {
+    left: -40px;
+  }
+
+  #company-dropdown {
+    left: 0;
+  }
+
+  /* Registration for desktop */
+  .registration {
+    flex-direction: row;
+    margin-top: 0;
+    padding-top: 0;
+    gap: 16px;
+    margin-left: auto;
+  }
+
+  .btn-login,
+  .btn-register {
+    width: auto;
+  }
+
+  /* Main content desktop layout */
+  .main {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px 40px 40px;
+    gap: 80px;
+  }
+
+  .hero-image {
+    width: 45%;
+    max-width: 480px;
+    order: 2;
+  }
+
+  .text-content {
+    text-align: left;
+    padding: 60px 0 0;
+    max-width: 500px;
+    order: 1;
+  }
+
+  .text-content h1 {
+    font-size: clamp(40px, 5vw, 72px);
+    margin-bottom: 32px;
+  }
+
+  .text-content p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .clients {
+    margin-top: 80px;
+    gap: 24px;
+    justify-content: flex-start;
+  }
+
+  .clients img {
+    height: 22px;
+  }
+}
+
+/* ===== Large Desktop (1024px+) ===== */
+@media (min-width: 1024px) {
+  .header {
+    padding: 20px 40px;
+  }
+
+  .main {
+    padding: 40px 80px 80px;
+    gap: 120px;
+  }
+
+  .text-content {
+    padding: 80px 0 0;
+  }
+
+  .text-content h1 {
+    font-size: 72px;
+  }
+
+  .clients {
+    margin-top: 100px;
+    gap: 36px;
+  }
+
+  .clients img {
+    height: 26px;
+  }
+}
