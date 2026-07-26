@@ -33,6 +33,8 @@ function closeAllDropdowns(except) {
       if (dropdown) {
         dropdown.classList.remove('active');
       }
+      // Remove link-open from parent nav-link
+      btn.closest('.nav-link')?.classList.remove('link-open');
     }
   });
 }
@@ -51,6 +53,8 @@ navBtns.forEach(btn => {
     if (dropdown) {
       dropdown.classList.toggle('active');
     }
+    // Toggle link-open on parent nav-link
+    btn.closest('.nav-link')?.classList.toggle('link-open');
   });
 });
 
